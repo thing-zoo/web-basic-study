@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&display=swap');
+
+        * {
+            font-family: 'Hahmlet', serif;
+        }
+
+        .mytitle {
+            background-color: green;
+
+            width: 300px;
+            height: 200px;
+
+            border-radius: 10px;
+            color: white;
+
+            text-align: center;
+
+            padding-top: 30px;
+
+            background-image: url(https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .mybtn {
+            font-size: 12px;
+        }
+
+        .mytxt {
+            color: red;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 20px auto 0px auto;
+        }
