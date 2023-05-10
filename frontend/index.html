@@ -57,8 +57,7 @@
         }
 
         .mycards {
-            /* width: 1200px; */
-            margin: 20px auto 20px auto;
+            margin: 20px 10% 20px 10%;
         }
 
         .mypost {
@@ -84,11 +83,44 @@
 
     <script>
         $(document).ready(function() {
+            fetchTemp()
+            fetchMovies()
+        })
+
+        function fetchTemp() {
             fetch("http://spartacodingclub.shop/sparta_api/weather/seoul").then(res => res.json()).then(data => {
                 $('#temp').empty()
                 $('#temp').append(data['temp'])
             })
-        })
+        }
+        
+        function fetchMovies() {
+            $('#movie-list').empty()
+            fetch("http://spartacodingclub.shop/web/api/movie").then(res => res.json()).then(data => {
+                let movies = data['movies']
+                movies.forEach(e => {
+                    let imageUrl = e['image']
+                    let title = e['title']
+                    let comment = e['comment']
+                    let star = "⭐️".repeat(e['star'])
+                    let desc = e['desc']
+                    let temp_html = `<div class="col">
+                                        <div class="card h-100">
+                                            <img src=${imageUrl}
+                                                class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${title}</h5>
+                                                <p class="card-text">${desc}</p>
+                                                <p>${star}</p>
+                                                <p class="mycomment">${comment}</p>
+                                            </div>
+                                        </div>
+                                    </div>`
+                    $('#movie-list').append(temp_html)
+                });
+            })
+        }
+        
     </script>
 </head>
 
@@ -124,7 +156,7 @@
         </div>
     </div>
     <div class="mycards">
-        <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="movie-list">
             <div class="col">
                 <div class="card h-100">
                     <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
