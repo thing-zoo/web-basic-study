@@ -1,4 +1,4 @@
-import config
+from ..  import config
 from pymongo import MongoClient
 client = MongoClient(config.mongodb_client_url)
 db = client.dbsparta
