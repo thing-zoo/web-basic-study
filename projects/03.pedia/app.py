@@ -22,6 +22,7 @@ def home():
 def movie_post():
 	url_receive = request.form['url_give']
 	comment_receive = request.form['comment_give']
+	star_receive = request.form['star_give']
 	
     # url에 해당하는 meta data 가져오기
 	headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
@@ -35,7 +36,8 @@ def movie_post():
 		'title': ogtitle,
         'desc': ogdesc,
         'image': ogimage,
-        'comment': comment_receive
+        'comment': comment_receive,
+        'star': star_receive,
     }
 	db.movies.insert_one(doc)
 
